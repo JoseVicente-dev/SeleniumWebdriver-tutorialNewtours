@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -40,9 +42,13 @@ public class GoogleSearchTest {
         searchBox.submit();
 
         //Implicit Wait
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);//Espera a que el elemento cargue antes de volver a buscarlo
 
-        assertEquals("quality-stream Introduccion a la automatizacion de pruebas de software", driver.getTitle());
+        //Explicit Wait
+        WebDriverWait explicitWait = new WebDriverWait(driver, 10);//Inicializa la espera explicita.
+        explicitWait.until(ExpectedConditions.titleContains("quality-stream"));//Permite esperar maximo 10 secs hasta que el titulo aparezca
+
+        assertEquals("quality-stream Introduccion a la automatizacion de pruebas de software - Buscar con Google", driver.getTitle());
     }
 
     @AfterEach
