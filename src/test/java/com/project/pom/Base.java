@@ -32,10 +32,14 @@ public class Base {
     }
 
     //Wrapper para una lista de elementos
-    public List<WebElement> findElments(By locator){
+    public List<WebElement> findElements(By locator){
         return driver.findElements(locator);
     }
-    //Metodos equivalentes a las CommonActions del tutor Ivan. Especifican acciones rutinarias que se hacen en las paginas web
+
+    /**
+     * Metodos equivalentes a las CommonActions del tutor Ivan. Especifican acciones rutinarias que se hacen en las paginas web
+     * Se crean metodos tanto para localizadores By (POM) y su equivalente para WebElements (Page Factory)
+     */
     //Traer/leer texto
     public String getText(WebElement element){
         return  element.getText();
@@ -47,9 +51,41 @@ public class Base {
 
     //Insertar texto (to type = escribir)
     public void type(String inputText, By locator){
-
+        driver.findElement(locator).sendKeys(inputText);
     }
 
+    public void type(String inputText, WebElement element){
+        element.sendKeys(inputText);
+    }
 
+    //Dar click
+    public void click(By locator){
+        driver.findElement(locator).click();
+    }
+
+    public void click(WebElement element){
+        element.click();
+    }
+
+    //El elemento se muestra en la pagina
+    public Boolean isDisplayed(By locator){
+        try {
+            return  driver.findElement(locator).isDisplayed();
+        }catch (org.openqa.selenium.NoSuchElementException e){
+            return false;
+        }
+    }
+
+    public Boolean isDisplayed(WebElement element){
+        try {
+            return element.isDisplayed();
+        }catch (org.openqa.selenium.NoSuchElementException e){
+            return false;
+        }
+    }
+    //Permite pasar la ruta URL de la página a probar
+    public void visit(String URL){
+        driver.get(URL);
+    }
 
 }
