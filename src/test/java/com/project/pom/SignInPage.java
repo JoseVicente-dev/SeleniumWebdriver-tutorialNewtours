@@ -3,9 +3,9 @@ package com.project.pom;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SignIn extends Base {
+public class SignInPage extends Base {
 
-    public SignIn(WebDriver driver) {
+    public SignInPage(WebDriver driver) {
         super(driver);
     }
 

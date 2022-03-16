@@ -11,7 +11,7 @@ public class Base {
     private WebDriver driver;
 
     private static final String WEBDRIVER_CHROME_DRIVER = "webdriver.chrome.driver";
-    private static final String WEBDRIVER_CHROME_DRIVER_PATH = "src/test/resources/driver/windows/chrome/chromedriver.exe";
+    private static final String WEBDRIVER_CHROME_DRIVER_PATH = "src/test/resources/drivers/windows/chrome/chromedriver.exe";
 
     public Base(WebDriver driver){
         this.driver = driver;

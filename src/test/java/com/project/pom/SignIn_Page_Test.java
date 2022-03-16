@@ -5,29 +5,28 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class Register_Test {
+public class SignIn_Page_Test {
 
     private static final String TEST_URL = "https://demo.guru99.com/test/newtours/";
 
     private WebDriver driver;
-    RegisterPage registerPage;
-
-
+    SignInPage signInPage;
 
     @BeforeEach
     public void setUp() throws Exception{
-        registerPage = new RegisterPage(driver);
-        driver = registerPage.chromeDriverConnection();
-        registerPage.visit(TEST_URL);
+        signInPage = new SignInPage(driver);
+        driver = signInPage.chromeDriverConnection();
+        signInPage.visit(TEST_URL);
     }
 
     @Test
-    public void test() throws InterruptedException{
-        registerPage.registerUser();;
-        assertEquals("Note: Your user name is qualityadmin.",registerPage.registeredMessage());
+    public void test(){
+        signInPage.SignIn();
+        assertTrue(signInPage.isHomePageDisplayed());
     }
+
 
     @AfterEach
     public void tearDown() throws Exception{
