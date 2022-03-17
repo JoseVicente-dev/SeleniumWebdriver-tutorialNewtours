@@ -22,8 +22,9 @@ public class SignIn_Page_Test {
     }
 
     @Test
-    public void test(){
+    public void test() throws InterruptedException {
         signInPage.SignIn();
+        Thread.sleep(2000);
         assertTrue(signInPage.isHomePageDisplayed());
     }
 
